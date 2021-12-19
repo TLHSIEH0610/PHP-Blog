@@ -6,6 +6,8 @@ class Auth {
         return isset($_SESSION['isLogin']) && $_SESSION['isLogin'];
     }
 
+   
+
     public static function login(){
         session_regenerate_id(true);
         $_SESSION['isLogin'] = true;
