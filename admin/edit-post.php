@@ -16,7 +16,7 @@ $category_ids = array_column($post -> listCategories($conn), 'id');
 
 $categories = Category::listCategories($conn);
 
-var_dump($post); 
+
 if($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $post -> title = $_POST['title'];

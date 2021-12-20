@@ -6,7 +6,7 @@ $conn = require 'classes/Database.php';
 
 $post = Post::getPostsWithCategories($conn, $_GET['id']);
 //post records with different categories in an Array
-var_dump($post);
+
 
 ?>
 

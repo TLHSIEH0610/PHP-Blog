@@ -16,9 +16,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
 
-    if($post->delete($conn)){
+    $previous_image = $post->image;
 
-        Url::redirect("index.php");
+    if ($post->setImageFile($conn, null)) {
+
+        if ($previous_image) {
+            unlink("../uploads/$previous_image");
+        }
+
+        Url::redirect("/admin/edit-post-image.php?id={$post->id}");
 
     }
 
@@ -28,14 +34,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <?php require "../components/header.php" ?>
 
-<h2>Delete Post</h2>
+<h2>Delete post image</h2>
 
 <form method="post">
 
     <p>Are you sure?</p>
 
     <button>Delete</button>
-    <a href="post.php?id=<?= $post->id; ?>">Cancel</a>
+    <a href="edit-post-image.php?id=<?= $post->id; ?>">Cancel</a>
 
 </form>
 

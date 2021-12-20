@@ -10,7 +10,7 @@ $conn = require '../classes/Database.php';
 
 $post = Post::getPostsWithCategories($conn, $_GET['id']);
 //post records with different categories in an Array
-// var_dump($post);
+
 
 ?>
 
@@ -26,12 +26,14 @@ $post = Post::getPostsWithCategories($conn, $_GET['id']);
 
         <p><?php echo $post[0]['content']; ?></p>
         
-        <img src="" alt="">
+        <?php if ($post[0]['image']) : ?>
+            <img src="/files/<?= $post[0]['image']; ?>">
+        <?php endif; ?>
 
     </article>
 
     <a href="edit-post.php?id=<?php echo $post[0]['id']; ?>">Edit</a>
     <a href="delete-post.php?id=<?php echo $post[0]['id']; ?>">Delete</a>
-    <a href="">Edit Image</a>
+    <a href="edit-post-image.php?id=<?php echo $post[0]['id'] ?>">Edit Image</a>
 
 <?php require '../components/footer.php' ;?>

@@ -6,7 +6,7 @@
     </ul>
 <?php endif;?>
 
-<?php var_dump($category_ids); ?>
+
 
 <form method="post">
 

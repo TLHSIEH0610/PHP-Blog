@@ -252,12 +252,12 @@ class Post {
 
     public function setImageFile($conn, $filename){
 
-        $sql = "UPDATE post SET image_file = :image_file WHERE id = :id;";
+        $sql = "UPDATE post SET image = :image WHERE id = :id;";
 
         $stmt = $conn -> prepare($sql);
 
         $stmt->bindValue(':id', $this->id, PDO::PARAM_INT);
-        $stmt->bindValue(':image_file', $filename, $filename == null ? PDO::PARAM_NULL : PDO::PARAM_STR);
+        $stmt->bindValue(':image', $filename, $filename == null ? PDO::PARAM_NULL : PDO::PARAM_STR);
 
         return $stmt->execute();
         

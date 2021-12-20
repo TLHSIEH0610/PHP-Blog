@@ -6,11 +6,11 @@ $conn = require 'classes/Database.php';
 
 $paginator = new Paginator($_GET['page']?? 1, 5, Post::getTotal($conn));
 
-// var_dump($paginator);
+
 
 $posts = Post::getPage($conn, $paginator->limit, $paginator->offset);
 
-// var_dump($posts );
+
 
 ?>
 
